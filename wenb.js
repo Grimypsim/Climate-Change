@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (backButton) {
         backButton.addEventListener("click", function (e) {
             e.preventDefault();
+            document.body.style.transition = "opacity 0.3s ease";
             document.body.style.opacity = "0";
             setTimeout(() => {
                 window.location.href = "chap2.html";
@@ -11,7 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    document.body.style.opacity = "0";
     setTimeout(() => {
+        document.body.style.transition = "opacity 0.3s ease";
         document.body.style.opacity = "1";
     }, 100);
 });
