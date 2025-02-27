@@ -1,34 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll(".btn[href^='#']");
+    const navButtons = document.querySelectorAll(".nav-btn, .next-btn");
     
-    navLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
+    navButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
+            const targetUrl = this.getAttribute("href");
 
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 50,
-                    behavior: "smooth"
-                });
-            }
+            document.body.style.opacity = "0";
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 300);
         });
     });
 
-    const sections = document.querySelectorAll(".section");
+    setTimeout(() => {
+        document.body.style.opacity = "1";
+    }, 100);
 
-    function fadeInSections() {
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
+    const infoSection = document.querySelector(".info-section");
 
-            if (sectionTop < windowHeight - 100) {
-                section.classList.add("visible");
-            }
-        });
+    function fadeInInfo() {
+        const sectionTop = infoSection.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight - 100) {
+            infoSection.classList.add("visible");
+        }
     }
 
-    window.addEventListener("scroll", fadeInSections);
-    fadeInSections();
+    window.addEventListener("scroll", fadeInInfo);
+    fadeInInfo();
 });
