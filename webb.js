@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     backBtn.addEventListener('click', () => {
         document.body.style.animation = 'fadeOut 0.5s forwards';
         setTimeout(() => {
-            window.location.href = '../chap2.html';
+            window.location.href = 'chap2.html';
         }, 500);
     });
 });
